@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+    font-family: 'Cinzel Decorative', cursive;
+    background-color: #0a0f24;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Styles des titres avec tailles différentes */
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+p {
+    font-size: 18px;
+}
+
+header {
+    background: #102a53;
+    padding: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #0e1d40;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: #1a2b5c;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.button {
+    padding: 10px 15px;
+    background: #1e90ff;
+    color: white;
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+}
+
+.button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+.progress-bar {
+    width: 100%;
+    background: #344b8e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress {
+    height: 20px;
+    width: 0%;
+    background: #4fd1ff;
+    transition: width 0.5s;
+}
+
+.rank {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #4fd1ff;
+}
+
+.daily-quest {
+    margin-top: 40px;
+    background: #1a2b5c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.quest-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.exercise {
+    flex: 1;
+    text-align: left;
+}
+
+
+    </style>
+    <script>
+        let niveau = 0;
+        let exp = 0;
+        let expMax = 100;
+        let rang = "E";
+
+        let exos = {
+            "pompes": {count: 0, max: 20, completed: false},
+            "squats": {count: 0, max: 20, completed: false},
+            "abdos": {count: 0, max: 20, completed: false},
+            "course": {count: 0, max: 2, completed: false}
+        };
+
+        function mettreAJourAffichage() {
+            document.querySelector(".progress").style.width = (exp / expMax) * 100 + "%";
+            document.querySelector(".rank").innerText = `Niveau: ${niveau} | Rang : ${rang}`;
+
+            for (let exo in exos) {
+                let btnPlus = document.getElementById(`btn-plus-${exo}`);
+                let btnComplete = document.getElementById(`btn-complete-${exo}`);
+                let texte = document.getElementById(exo);
+
+                texte.innerText = `${exo.charAt(0).toUpperCase() + exo.slice(1)} (${exos[exo].count}/${exos[exo].max})`;
+
+                if (exos[exo].count >= exos[exo].max && !exos[exo].completed) {
+                    exos[exo].completed = true;
+                    btnPlus.disabled = true;
+                    btnComplete.disabled = true;
+                    // Vérifie la complétion de toute la quête
+                    verifierCompletionQuete();
+                }
+            }
+        }
+
+        function gagnerExp(amount) {
+            exp += amount;
+            while (exp >= expMax) {
+                exp -= expMax;
+                niveau++;
+                expMax += 5;
+
+                if (niveau >= 150) {
+                    rang = "SS";
+                } else if (niveau >= 100) {
+                    rang = "S";
+                } else if (niveau >= 80) {
+                    rang = "A";
+                } else if (niveau >= 60) {
+                    rang = "B";
+                } else if (niveau >= 40) {
+                    rang = "C";
+                } else if (niveau >= 20) {
+                    rang = "D";
+                } else {
+                    rang = "E";
+                }
+            }
+            mettreAJourAffichage();
+        }
+
+        function incrementerExercice(exo) {
+            if (!exos[exo].completed && exos[exo].count < exos[exo].max) {
+                exos[exo].count += 1;
+                mettreAJourAffichage();
+            }
+        }
+
+        function completerExercice(exo) {
+            if (!exos[exo].completed) {
+                exos[exo].count = exos[exo].max;
+                mettreAJourAffichage();
+            }
+        }
+
+        function verifierCompletionQuete() {
+            let toutesComplete = Object.values(exos).every(exo => exo.completed);
+
+            if (toutesComplete) {
+                gagnerExp(100); // Ajoute 20 XP si tout est complété
+            }
+        }
+    </script>
+</head>
+<body onload="mettreAJourAffichage()">
+    <header>Arise</header>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Quêtes</a>
+        <a href="#">Progression</a>
+        <a href="#">Classement</a>
+    </nav>
+    <div class="container">
+        <h2>Bienvenue, Chasseur !</h2>
+        <p>Transforme tes entraînements en quêtes et monte en niveau !</p>
+        
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        
+        <p class="rank">Niveau: 0 | Rang : E</p>
+    </div>
+
+    <div class="container daily-quest">
+        <h3>Quête Journalière (+100 exp)</h3>
+        
+        <div class="quest-item">
+            <span class="exercise" id="pompes">Pompes (0/20)</span>
+            <button class="button" id="btn-plus-pompes" onclick="incrementerExercice('pompes')">+1</button>
+            <button class="button" id="btn-complete-pompes" onclick="completerExercice('pompes')">Activité Complétée</button>
+        </div>
+        
+        <div class="quest-item">
+            <span class="exercise" id="squats">Squats (0/20)</span>
+            <button class="button" id="btn-plus-squats" onclick="incrementerExercice('squats')">+1</button>
+            <button class="button" id="btn-complete-squats" onclick="completerExercice('squats')">Activité Complétée</button>
+        </div>
+        
+        <div class="quest-item">
+            <span class="exercise" id="abdos">Abdos (0/20)</span>
+            <button class="button" id="btn-plus-abdos" onclick="incrementerExercice('abdos')">+1</button>
+            <button class="button" id="btn-complete-abdos" onclick="completerExercice('abdos')">Activité Complétée</button>
+        </div>
+        
+        <div class="quest-item">
+            <span class="exercise" id="course">Course (0/2km)</span>
+            <button class="button" id="btn-plus-course" onclick="incrementerExercice('course')">+1</button>
+            <button class="button" id="btn-complete-course" onclick="completerExercice('course')">Activité Complétée</button>
+        </div>
+    </div>
+</body>
+</html>

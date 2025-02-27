@@ -4,132 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arise</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-    font-family: 'Cinzel Decorative', cursive;
-    background-color: #0a0f24;
-    color: white;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+            font-family: 'Cinzel Decorative', cursive;
+            background-color: #0a0f24;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
 
-/* Styles des titres avec tailles différentes */
-h1 {
-    font-size: 40px;
-    font-weight: 700;
-}
+        /* Styles des titres avec tailles différentes */
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+        }
 
-h2 {
-    font-size: 28px;
-    font-weight: 600;
-}
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+        }
 
-h3 {
-    font-size: 22px;
-    font-weight: 500;
-}
+        h3 {
+            font-size: 22px;
+            font-weight: 500;
+        }
 
-p {
-    font-size: 18px;
-}
+        p {
+            font-size: 18px;
+        }
 
-header {
-    background: #102a53;
-    padding: 20px;
-    font-size: 40px;
-    font-weight: bold;
-}
+        header {
+            background: #102a53;
+            padding: 20px;
+            font-size: 40px;
+            font-weight: bold;
+        }
 
-nav {
-    display: flex;
-    justify-content: center;
-    background: #0e1d40;
-    padding: 10px;
-}
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #0e1d40;
+            padding: 10px;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
 
-nav a:hover {
-    text-decoration: underline;
-}
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-.container {
-    margin: 50px auto;
-    max-width: 800px;
-    padding: 20px;
-    background: #1a2b5c;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-}
+        .container {
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: #1a2b5c;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
 
-.button {
-    padding: 10px 15px;
-    background: #1e90ff;
-    color: white;
-    font-family: 'Cinzel Decorative', cursive;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 14px;
-}
+        .button {
+            padding: 10px 15px;
+            background: #1e90ff;
+            color: white;
+            font-family: 'Cinzel Decorative', cursive;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
 
-.button:disabled {
-    background: gray;
-    cursor: not-allowed;
-}
+        .button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
 
-.progress-bar {
-    width: 100%;
-    background: #344b8e;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 20px 0;
-}
+        .progress-bar {
+            width: 100%;
+            background: #344b8e;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
 
-.progress {
-    height: 20px;
-    width: 0%;
-    background: #4fd1ff;
-    transition: width 0.5s;
-}
+        .progress {
+            height: 20px;
+            width: 0%;
+            background: #4fd1ff;
+            transition: width 0.5s;
+        }
 
-.rank {
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #4fd1ff;
-}
+        .rank {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #4fd1ff;
+        }
 
-.daily-quest {
-    margin-top: 40px;
-    background: #1a2b5c;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-}
+        .daily-quest {
+            margin-top: 40px;
+            background: #1a2b5c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
 
-.quest-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 15px 0;
-    font-size: 18px;
-}
+        .quest-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 18px;
+        }
 
-.exercise {
-    flex: 1;
-    text-align: left;
-}
-
+        .exercise {
+            flex: 1;
+            text-align: left;
+        }
 
     </style>
     <script>
@@ -144,6 +143,57 @@ nav a:hover {
             "abdos": {count: 0, max: 20, completed: false},
             "course": {count: 0, max: 2, completed: false}
         };
+
+        // Fonction pour lire un cookie
+        function lireCookie(nom) {
+            let nomCookie = nom + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let cookies = decodedCookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                while (cookie.charAt(0) == ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(nomCookie) == 0) {
+                    return cookie.substring(nomCookie.length, cookie.length);
+                }
+            }
+            return "";
+        }
+
+        // Fonction pour définir un cookie
+        function definirCookie(nom, valeur, jours) {
+            let date = new Date();
+            date.setTime(date.getTime() + (jours * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = nom + "=" + valeur + ";" + expires + ";path=/";
+        }
+
+        // Fonction pour charger les données depuis les cookies
+        function chargerProgression() {
+            let data = lireCookie("progression");
+            if (data) {
+                let progression = JSON.parse(data);
+                niveau = progression.niveau || 0;
+                exp = progression.exp || 0;
+                expMax = progression.expMax || 100;
+                rang = progression.rang || "E";
+                exos = progression.exos || exos;
+            }
+            mettreAJourAffichage();
+        }
+
+        // Fonction pour sauvegarder les données dans les cookies
+        function sauvegarderProgression() {
+            let progression = {
+                niveau: niveau,
+                exp: exp,
+                expMax: expMax,
+                rang: rang,
+                exos: exos
+            };
+            definirCookie("progression", JSON.stringify(progression), 7);
+        }
 
         function mettreAJourAffichage() {
             document.querySelector(".progress").style.width = (exp / expMax) * 100 + "%";
@@ -190,12 +240,14 @@ nav a:hover {
                 }
             }
             mettreAJourAffichage();
+            sauvegarderProgression(); // Sauvegarde la progression après chaque changement
         }
 
         function incrementerExercice(exo) {
             if (!exos[exo].completed && exos[exo].count < exos[exo].max) {
                 exos[exo].count += 1;
                 mettreAJourAffichage();
+                sauvegarderProgression(); // Sauvegarde après chaque mise à jour
             }
         }
 
@@ -203,6 +255,7 @@ nav a:hover {
             if (!exos[exo].completed) {
                 exos[exo].count = exos[exo].max;
                 mettreAJourAffichage();
+                sauvegarderProgression(); // Sauvegarde après chaque complétion
             }
         }
 
@@ -210,12 +263,14 @@ nav a:hover {
             let toutesComplete = Object.values(exos).every(exo => exo.completed);
 
             if (toutesComplete) {
-                gagnerExp(100); // Ajoute 20 XP si tout est complété
+                gagnerExp(100); // Ajoute 100 XP si tout est complété
             }
         }
+
+        window.onload = chargerProgression; // Charger les données au chargement de la page
     </script>
 </head>
-<body onload="mettreAJourAffichage()">
+<body>
     <header>Arise</header>
     <nav>
         <a href="#">Accueil</a>
